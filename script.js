@@ -1,20 +1,18 @@
-const newBookBtn  = document.querySelector('#newBookBtn');
+const newBookBtn    = document.querySelector('#newBookBtn');
+const myForm        = document.getElementById('myForm');
+const addBook       = document.querySelector('#addBook')
+const booksGrid     = document.querySelector('.books');
+const book          = document.querySelector('#book');
+const formAndButton = document.querySelector('.formAndButton')
 
-const myForm      = document.getElementById('myForm');
-const bookAuthor  = document.querySelector(`input[name = 'author']`);
-const bookTitle   = document.querySelector(`input[name = 'title']`);
-const bookPages   = document.querySelector(`input[name = 'pages']`);
-const bookReadYes = document.querySelector('input[id="readYes"');
-const bookReadNo  = document.querySelector('input[id="readNo"');
-
-const addBook     = document.querySelector('#addBook')
 
 let myLibrary = [];
 
-function Book(author,title,pages) {
+function Book(author,title,pages,isRead) {
   this.author = author;
   this.title  = title;
   this.pages  = pages;
+  this.isRead = isRead
 }
 
 const getBookFromInput = () => {
@@ -26,18 +24,41 @@ const getBookFromInput = () => {
 }
 
 newBookBtn.addEventListener('click', function() {
-  myForm.style.display  = 'block';
-  addBook.style.display = 'block';
+  formAndButton.style.display = 'flex';
 })
 
 
 addBook.addEventListener('click', (event) => {
   const newBook = getBookFromInput();
-  myForm.style.display  = 'none';
-  addBook.style.display = 'none';
+  formAndButton.style.display = 'none'
   myLibrary.push(newBook);
   document.getElementById("myForm").reset();
+  displayCards();
 })
+
+function displayCards() {
+  let bookCard = createCard();
+  let bookIndex = myLibrary.length-1;
+  bookCard.setAttribute('book-index',bookIndex);
+  let bookObject = myLibrary[bookIndex];
+  bookCard.innerHTML += '<p>' + 'TITLE: '  + bookObject.title  + '</p>';
+  bookCard.innerHTML += '<p>' + 'AUTHOR: ' + bookObject.author + '</p>';
+  bookCard.innerHTML += '<p>' + 'PAGES: '  + bookObject.pages  + '</p>';
+  bookCard.innerHTML += '<p>' + 'READ: '   + bookObject.isRead + '</p>';
+  bookCard.innerHTML += `<button class = "delete" book-index = ${bookIndex}>` + 'DELETE' + '</button>'
+  
+}
+
+function createCard() {
+  const card = document.createElement('div');
+  card.classList.add('card');
+  booksGrid.appendChild(card); 
+  return card
+}
+
+
+
+
 
 
 
