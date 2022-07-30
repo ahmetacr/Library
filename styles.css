@@ -14,7 +14,7 @@ p {
   background-color: beige;
   color: black;
   margin: auto 15px;
-}
+} 
 
 .header h1 {
   text-align: center;
@@ -114,7 +114,7 @@ form > div > label {
   left: 0;
   right: 0;
   height: 0.5em;
-  width: 10rem;
+  width: 8rem;
   margin: 0 auto;
   border-top: 1px solid rgba(0, 0, 0, 0.5);
 }
