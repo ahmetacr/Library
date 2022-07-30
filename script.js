@@ -43,13 +43,12 @@ function displayCards() {
   let bookObject = myLibrary[bookIndex];
 
   bookCard.setAttribute('book-index',bookIndex);
-  bookCard.innerHTML += '<p>' + 'TITLE: '  + bookObject.title  + '</p>';
-  bookCard.innerHTML += '<p>' + 'AUTHOR: ' + bookObject.author + '</p>';
-  bookCard.innerHTML += '<p>' + 'PAGES: '  + bookObject.pages  + '</p>';
-  bookCard.innerHTML += '<p>' + 'READ STATUS: '   + '</p>';
+  bookCard.innerHTML += '<p>' +   bookObject.title  + '</p>';
+  bookCard.innerHTML += '<p>' + ' by ' + bookObject.author + '</p>';
+  bookCard.innerHTML += '<p>' +   bookObject.pages + ' pages ' + '</p>';
+  bookCard.innerHTML += '<p>' + ' READ YET? '   + '</p>';
   bookCard.innerHTML += `<button class = "delete" book-index = ${bookIndex}>` + 'REMOVE' + '</button>'
   deleteButton();
-  
   
   // READ STATUS SWITCH
   if (!bookObject.isRead) {
@@ -60,7 +59,6 @@ function displayCards() {
     bookCard.appendChild(switchButton);
   }
 
-
   const input = document.querySelectorAll('input[class="checkbox"]');
   input.forEach(input => input.addEventListener('change',(event) => {
     if (event.target.checked) {
@@ -70,7 +68,6 @@ function displayCards() {
       bookObject.isRead = true;
     }
   }))
-
 }
 
 
@@ -83,6 +80,7 @@ function createCard() {
 
 function deleteButton() {
   const deleteBTN = document.querySelectorAll('.delete');
+
   deleteBTN.forEach(button => button.addEventListener('click',(event) => {
     let targetCardIndex = event.target.attributes['book-index'].value;
     const removeThisChild = document.querySelector(`[book-index="${targetCardIndex}"]`);
