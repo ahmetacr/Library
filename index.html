@@ -25,20 +25,20 @@
         </div>
         <div class="author">
           <label for="author">Author:</label>
-          <input type="text" name="author" id="author" required>
+          <input type="text" name="author" id="author" required pattern="[a-zA-Z]+\s[a-zA-Z]+">
         </div>
         <div class="pages">
           <label for="pages">Number of Pages: </label>
-          <input type="number" name="pages" id="pages" required>
+          <input type="number" name="pages" id="pages" required max="5000">
         </div>
         <div class="readBoolean">
           <label for="isRead">Have you read it?</label>
-          <input type="checkbox" name="read" id="isRead" required>
+          <input type="checkbox" name="read" id="isRead">
+        </div>
+        <div class="addBook">
+          <button id="addBook">ADD</button>
         </div>
       </form>
-      <div class="addBook">
-        <button id="addBook">ADD</button>
-      </div>
     </div>
   </div>
   <div class="books">
