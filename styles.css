@@ -1,7 +1,7 @@
 body {
   margin           : 0;
   padding          : 0;
-  background-color : rgba(0, 0, 0, 0.939);
+  background-color : rgba(0, 0, 0, 0.881);
   color            : aliceblue;
 }
 
@@ -272,4 +272,14 @@ form > div > label {
 #button-1 .knobs:before,
 #button-1 .layer {
   transition: 0.3s ease all;
+}
+
+/* VALIDATION */
+
+input:invalid {
+  border: 2px solid rgb(149, 2, 2);
+}
+
+input:valid {
+  border: 2px solid green;
 }
